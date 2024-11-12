@@ -21,9 +21,10 @@ interface Company{
 }
 
 
-interface UserDetails {
+export interface UserDetails {
   id: number;
   name: string;
+  username:string;
   email: string;
   address:Address;
   phone: string;
