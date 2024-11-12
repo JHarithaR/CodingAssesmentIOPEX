@@ -48,6 +48,7 @@ export const ApiContext: React.FC<{children:ReactNode}>= ({children}) => {
 
   const url: string = "https://jsonplaceholder.typicode.com/users";
   useEffect(() => {
+    setLoad(true);
     const fetchUsers = async () =>{
         try{
             const response = await fetch(url);

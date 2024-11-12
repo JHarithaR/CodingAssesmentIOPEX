@@ -16,6 +16,9 @@ const UserTable = () => {
   
   return (
     <>
+    {load && <p className='animate-pulse'>loading...</p>}
+    {!load && 
+    <>
     <table className='table-auto w-full border-2  dark:text-white'>
         <thead className='border-b-2 mb-4 bg-slate-400'>
             <td>
@@ -53,6 +56,8 @@ const UserTable = () => {
         <p>ContactDetails:{viewUser?.phone}</p>
         <p>Website:{viewUser?.website}</p>
     </div>}
+    </>
+    }
     </>
   )
 }
