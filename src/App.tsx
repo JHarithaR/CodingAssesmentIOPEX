@@ -1,27 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { ApiContext } from './contextfile/apiContext';
 import UserTable from './userTable';
 
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState('light');
   const toggleMode =() =>{
-    setDarkMode(!darkMode);
-    if(!darkMode)
+    setTheme(theme === 'light'? 'dark':'light')
+  }
+  useEffect(() =>{
+    if(theme ==='dark')
     {
-      document.documentElement.classList.add('dark');
+        document.querySelector('html')?.classList.add('dark')
     }
     else
     {
-      document.documentElement.classList.remove('dark');
-
+      document.querySelector('html')?.classList.remove('dark')
     }
-  }
+  },[theme])
   return (
    <ApiContext>
-    <button onClick = {toggleMode}>{darkMode ?'Light Mode':'Dark Mode'}</button>
+    <div className='flex mb-2 justify-between dark:bg-black'>
     <h1 className='text-center text-3xl text-black mb-4 dark:text-white '> User Management Dashboard</h1> 
+    <button onClick = {toggleMode} className='bg-orange-300 p-2  dark:text-white'>{ (theme ==='dark')?'Light Mode':'Dark Mode'}</button>
+    </div>
     <UserTable/>
     </ApiContext>
   )
