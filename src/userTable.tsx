@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useUsers } from './contextfile/apiContext';
+import { UserDetails } from './contextfile/apiContext';
 
 const UserTable = () => {
     const {data,load} = useUsers();
     // if(load) return <p>Loading...</p>
     console.log(data,load);
 
-    const [viewUser,setViewUser] = useState(null);
+    const [viewUser,setViewUser] = useState<UserDetails|null>(null);
 
-   const handledetails =(user:any) =>{
+   const handledetails =(user:UserDetails) =>{
     setViewUser(user)
    }
 
